@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{page_layout/layout}">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Realties</title>
+</head>
+<body>
+<div layout:fragment="main-content">
+  <div th:if="${ not#lists.isEmpty(realties)}">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Address</th>
+        <th>TypeOfRealty</th>
+        <th>Storey</th>
+        <th>M^2</th>
+        <th>NoOfBedrooms</th>
+        <th>Kitchen</th>
+        <th>Bathroom</th>
+        <th>Balconies</th>
+        <th>Furnished</th>
+        <th>RentPrice</th>
+        <th>Availability</th>
+        <th>Id</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="realty : ${realties}">
+        <td th:text="${realty.address}"></td>
+        <td th:text="${realty.typeOfRealty}"></td>
+        <td th:text="${realty.storey}"></td>
+        <td th:text="${realty.m2}"></td>
+        <td th:text="${realty.noOfBedrooms}"></td>
+        <td th:text="${realty.hasKitchen}"></td>
+        <td th:text="${realty.hasBathroom}"></td>
+        <td th:text="${realty.hasBalconies}"></td>
+        <td th:text="${realty.isFurnished}"></td>
+        <td th:text="${realty.rentPrice}"></td>
+        <td th:text="${realty.availability}"></td>
+        <td th:text="${realty.id}"></td>
+        <td> <a th:href="@{'/realty/' + ${realty.id}}">Details</a></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div th:if="${ #lists.isEmpty(realties)}">
+    No Realties found!
+  </div>
+</div>
+</body>
+</html>
