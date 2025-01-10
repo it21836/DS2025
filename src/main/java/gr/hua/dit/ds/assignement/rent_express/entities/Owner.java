@@ -90,10 +90,11 @@ public class Owner {
     public String toString() {
         return "Owner{" +
                 "email='" + email + '\'' +
+                ", id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
+                ", realties=" + realties +
                 '}';
     }
-
 }

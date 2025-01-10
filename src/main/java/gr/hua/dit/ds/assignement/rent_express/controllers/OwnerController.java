@@ -39,6 +39,6 @@ public class OwnerController {
     public String saveOwner(@ModelAttribute("realty") Owner owner, Model model){
         ownerService.saveOwner(owner);
         model.addAttribute("owners",ownerService.getOwners());
-        return "owner/owner";
+        return "owner/owners";
     }
 }

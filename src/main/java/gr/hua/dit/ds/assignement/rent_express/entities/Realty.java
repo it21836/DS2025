@@ -13,7 +13,7 @@ public class Realty {
     @Column
     private String address;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private TypeOfRealty typeOfRealty;
 
     @Column
@@ -172,7 +172,7 @@ public class Realty {
     public String toString() {
         return "Realty{" +
                 "address='" + address + '\'' +
-                ", typeOfRealty='" + typeOfRealty + '\'' +
+                ", typeOfRealty=" + typeOfRealty +
                 ", storey=" + storey +
                 ", m2=" + m2 +
                 ", noOfBedrooms=" + noOfBedrooms +
