@@ -26,6 +26,7 @@
         <th>Availability</th>
         <th>Type of realty</th>
         <th>Owner</th>
+        <th>Rent Requests</th>
         <th>Actions</th>
       </tr>
       </thead>
@@ -43,6 +44,11 @@
         <td th:text="${realty.availability}"></td>
         <td th:text="${realty.typeOfRealty}"></td>
         <td th:text="${realty.owner.lastName}"></td>
+        <td><ul>
+          <li th:each="request : ${realty.rentRequests}">
+            <span th:text="${request.renter.lastName}"></span>
+          </li>
+        </ul></td>
         <td> <a th:href="@{'/realty/' + ${realty.id}}">Details</a></td>
       </tr>
       </tbody>

@@ -43,23 +43,30 @@ public class RealtyController {
         return "realty/realty";
     }
 
-    @GetMapping("/assign/{id}")
-    public String showAssignOwnerToRealty(@PathVariable Integer realtyId, Model model){
-        Realty realty = realtyService.getRealty(realtyId);
-        List <Owner> owners = ownerService.getOwners();
-        model.addAttribute("realty", realty);
-        model.addAttribute("owners", owners);
-        return "realty/assignowner";
-    }
-
-    //unassignOwnerToRealty
-
-    @PostMapping("/assign/{id}")
-    public String assignOwnerToRealty(@PathVariable int realtyId, @RequestParam(value = "owner", required = true) int ownerId, Model model){
-        Owner owner = ownerService.getOwner(ownerId);
-        Realty realty = realtyService.getRealty(realtyId);
-        realtyService.assignOwnerToRealty(realtyId,ownerId);
+    @PostMapping("/new")
+    public String saveRealty(@ModelAttribute("owner") Realty realty, Model model){
+        realtyService.saveRealty(realty);
         model.addAttribute("realties",realtyService.getRealties());
         return "realty/realties";
     }
+
+//    @GetMapping("/assign/{id}")
+//    public String showAssignOwnerToRealty(@PathVariable Integer realtyId, Model model){
+//        Realty realty = realtyService.getRealty(realtyId);
+//        List <Owner> owners = ownerService.getOwners();
+//        model.addAttribute("realty", realty);
+//        model.addAttribute("owners", owners);
+//        return "realty/assignowner";
+//    }
+//
+//    //unassignOwnerToRealty
+//
+//    @PostMapping("/assign/{id}")
+//    public String assignOwnerToRealty(@PathVariable int realtyId, @RequestParam(value = "owner", required = true) int ownerId, Model model){
+//        Owner owner = ownerService.getOwner(ownerId);
+//        Realty realty = realtyService.getRealty(realtyId);
+//        realtyService.assignOwnerToRealty(realtyId,ownerId);
+//        model.addAttribute("realties",realtyService.getRealties());
+//        return "realty/realties";
+//    }
 }

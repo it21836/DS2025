@@ -2,6 +2,8 @@ package gr.hua.dit.ds.assignement.rent_express.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Realty {
 
@@ -47,6 +49,9 @@ public class Realty {
             CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name="owner_id")
     private Owner owner;
+
+    @OneToMany(mappedBy = "realty",cascade = CascadeType.ALL)
+    private List<Request> rentRequests;
 
     public Realty (){}
 
@@ -168,10 +173,19 @@ public class Realty {
         this.owner = owner;
     }
 
+    public List<Request> getRentRequests() {
+        return rentRequests;
+    }
+
+    public void setRentRequests(List<Request> rentRequests) {
+        this.rentRequests = rentRequests;
+    }
+
     @Override
     public String toString() {
         return "Realty{" +
                 "address='" + address + '\'' +
+                ", id=" + id +
                 ", typeOfRealty=" + typeOfRealty +
                 ", storey=" + storey +
                 ", m2=" + m2 +
@@ -183,6 +197,7 @@ public class Realty {
                 ", rentPrice=" + rentPrice +
                 ", availability=" + availability +
                 ", owner=" + owner +
+                ", rentRequests=" + rentRequests +
                 '}';
     }
 }

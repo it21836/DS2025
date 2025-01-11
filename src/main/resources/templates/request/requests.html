@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{page_layout/layout}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Requests</title>
+</head>
+<body>
+<div layout:fragment="main-content">
+    <div th:if="${ not#lists.isEmpty(requests)}">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th>Renter</th>
+                <th>Realty</th>
+                <th>MessageToOwner</th>
+                <th>State</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="request : ${requests}">
+                <td th:text="${request.date}"></td>
+                <td th:text="${request.renter.lastName}"></td>
+                <td th:text="${request.realty.address}"></td>
+                <td th:text="${request.messageToOwner}"></td>
+                <td th:text="${request.status}"></td>
+                <td> <a th:href="@{'/request/' + ${request.id}}">Details</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:if="${ #lists.isEmpty(requests)}">
+        No Requests found!
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{page_layout/layout}">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Renters</title>
+</head>
+<body>
+<div layout:fragment="main-content">
+  <div th:if="${ not#lists.isEmpty(renters)}">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Email</th>
+        <th>PhoneNumber</th>
+        <th>Requests Created</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="renter : ${renters}">
+        <td th:text="${renter.firstName}"></td>
+        <td th:text="${renter.lastName}"></td>
+        <td th:text="${renter.email}"></td>
+        <td th:text="${renter.phoneNumber}"></td>
+        <td><ul>
+          <li th:each="request : ${renter.requests}">
+            <span th:text="${request.realty.address}"></span>
+          </li>
+        </ul></td>
+        <td> <a th:href="@{'/renter/' + ${renter.id}}">Details</a></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div th:if="${ #lists.isEmpty(renters)}">
+    No Renters found!
+  </div>
+  <a href="/renter/new" class="btn btn-primary" role="button">Create new Renter</a>
+</div>
+</body>
+</html>

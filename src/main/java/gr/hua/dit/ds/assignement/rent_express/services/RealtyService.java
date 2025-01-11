@@ -35,13 +35,13 @@ public class RealtyService {
         realtyRepository.save(realty);
     }
 
-    @Transactional
-    public void assignOwnerToRealty(Integer realtyId, Integer ownerId){
-        Realty realty = realtyRepository.findById(realtyId).get();
-        Owner owner = ownerRepository.findById(ownerId).get();
-        realty.setOwner(owner);
-        owner.getRealties().add(realty);
-        ownerRepository.save(owner);
-        realtyRepository.save(realty);
-    }
+//    @Transactional
+//    public void assignOwnerToRealty(Integer realtyId, Integer ownerId){
+//        Realty realty = realtyRepository.findById(realtyId).get();
+//        Owner owner = ownerRepository.findById(ownerId).get();
+//        realty.setOwner(owner);
+//        owner.getRealties().add(realty);
+//        ownerRepository.save(owner);
+//        realtyRepository.save(realty);
+//    }
 }

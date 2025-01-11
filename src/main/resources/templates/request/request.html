@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{page_layout/layout}">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Request</title>
+</head>
+<body>
+<div layout:fragment="main-content">
+  <form action="#" th:action="@{/request/new}" th:object="${request}"
+        method="post">
+
+    <div class="form-group">
+      <label for="title">MessageToOwner</label>
+      <input type="text" id="title" class="form-control" th:field="*{messageToOwner}">
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+</body>
+</html>
