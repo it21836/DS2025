@@ -1,6 +1,7 @@
 package gr.hua.dit.ds.assignement.rent_express.services;
 
 import gr.hua.dit.ds.assignement.rent_express.entities.Owner;
+import gr.hua.dit.ds.assignement.rent_express.entities.Request;
 import gr.hua.dit.ds.assignement.rent_express.repositories.OwnerRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
@@ -30,4 +31,5 @@ public class OwnerService {
     public void saveOwner(Owner owner){
         ownerRepository.save(owner);
     }
+
 }
